@@ -28,9 +28,9 @@ public class CardDeliveryOrderTest {
         $("[data-test-id=phone] input").setValue("+79990000000");
         $("[data-test-id=agreement]").click();
         $(byText("Забронировать")).click();
-        $(byText("Встреча успешно забронирована на")).shouldBe(visible, Duration.ofSeconds(15));
-        $(byText(date)).shouldBe(visible);
-
+        $(".notification__content")
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + date), Duration.ofSeconds(15))
+                .shouldBe(Condition.visible);
     }
 
     @Test
@@ -44,8 +44,9 @@ public class CardDeliveryOrderTest {
         $("[data-test-id=phone] input").setValue("+79990000000");
         $("[data-test-id=agreement]").click();
         $(byText("Забронировать")).click();
-        $(byText("Встреча успешно забронирована на")).shouldBe(visible, Duration.ofSeconds(15));
-        $(byText(date)).shouldBe(visible);
+        $(".notification__content")
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + date), Duration.ofSeconds(15))
+                .shouldBe(Condition.visible);
     }
 
     @Test
